@@ -14,7 +14,7 @@ namespace OCR.Models
     
     public partial class Camera
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string recognition { get; set; }
         public Nullable<System.DateTime> time { get; set; }
     }

@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using OCR.Models;
-using System.Linq;
 
 namespace OCR.Controllers
 {
     public class CameraController : Controller
     {
         private static readonly HttpClient client = new HttpClient();
-        //private const string jetsonNanoUrl = "http://10.102.10.157:5000";
         private static List<string> recognizedDigits = new List<string>();
         OCREntities db = new OCREntities();
 
@@ -68,8 +66,6 @@ namespace OCR.Controllers
         [HttpGet]
         public ActionResult GetRecognizedDigits()
         {
-            //System.Diagnostics.Debug.WriteLine("Recognized Digits: " + string.Join(", ", recognizedDigits));
-            //return Json(new { digits = recognizedDigits}, JsonRequestBehavior.AllowGet);
             var latestCameraRecord = db.Camera.OrderByDescending(c => c.id).FirstOrDefault();
             return Json(new { digits = latestCameraRecord?.recognition.ToString()+" "+latestCameraRecord.time }, JsonRequestBehavior.AllowGet);
         }

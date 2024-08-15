@@ -7,7 +7,7 @@ import threading
 import time
 
 app = Flask(__name__)
-A_SERVER_URL = 'https://localhost:44381/'       #  'http://10.102.10.157:8088/WebMVC_OCR' 
+A_SERVER_URL = 'https://localhost:44381/'       #  'http://IP:8088/WebMVC_OCR' 
 camera_active = False
 camera_thread = None
 
