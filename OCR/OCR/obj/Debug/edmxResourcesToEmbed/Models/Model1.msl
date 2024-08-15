@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OCRModelStoreContainer" CdmEntityContainer="OCREntities">
+    <EntitySetMapping Name="LoginTime">
+      <EntityTypeMapping TypeName="OCRModel.LoginTime">
+        <MappingFragment StoreEntitySet="LoginTime">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MID" ColumnName="MID" />
+          <ScalarProperty Name="LoginTime1" ColumnName="LoginTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Member">
+      <EntityTypeMapping TypeName="OCRModel.Member">
+        <MappingFragment StoreEntitySet="Member">
+          <ScalarProperty Name="MID" ColumnName="MID" />
+          <ScalarProperty Name="Mname" ColumnName="Mname" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Permissions" ColumnName="Permissions" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Message">
+      <EntityTypeMapping TypeName="OCRModel.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="MID" ColumnName="MID" />
+          <ScalarProperty Name="mName" ColumnName="mName" />
+          <ScalarProperty Name="mWID" ColumnName="mWID" />
+          <ScalarProperty Name="mContent" ColumnName="mContent" />
+          <ScalarProperty Name="mCreateTime" ColumnName="mCreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkDetail">
+      <EntityTypeMapping TypeName="OCRModel.WorkDetail">
+        <MappingFragment StoreEntitySet="WorkDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WorkItem" ColumnName="WorkItem" />
+          <ScalarProperty Name="WorkStart" ColumnName="WorkStart" />
+          <ScalarProperty Name="WorkEnd" ColumnName="WorkEnd" />
+          <ScalarProperty Name="MachineState" ColumnName="MachineState" />
+          <ScalarProperty Name="WorkID" ColumnName="WorkID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkList">
+      <EntityTypeMapping TypeName="OCRModel.WorkList">
+        <MappingFragment StoreEntitySet="WorkList">
+          <ScalarProperty Name="WID" ColumnName="WID" />
+          <ScalarProperty Name="Executor" ColumnName="Executor" />
+          <ScalarProperty Name="Item" ColumnName="Item" />
+          <ScalarProperty Name="TotalNum" ColumnName="TotalNum" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Camera">
+      <EntityTypeMapping TypeName="OCRModel.Camera">
+        <MappingFragment StoreEntitySet="Camera">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="recognition" ColumnName="recognition" />
+          <ScalarProperty Name="time" ColumnName="time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

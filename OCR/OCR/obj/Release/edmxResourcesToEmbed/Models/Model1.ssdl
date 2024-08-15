@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OCRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Camera">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="recognition" Type="nvarchar" MaxLength="50" />
+    <Property Name="time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LoginTime">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MID" Type="nvarchar" MaxLength="50" />
+    <Property Name="LoginTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MID" />
+    </Key>
+    <Property Name="MID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Account" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Permissions" Type="tinyint" />
+    <Property Name="Token" Type="bit" />
+    <Property Name="CreateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="MID" />
+    </Key>
+    <Property Name="MID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mName" Type="nvarchar" MaxLength="50" />
+    <Property Name="mWID" Type="nvarchar" MaxLength="50" />
+    <Property Name="mContent" Type="nvarchar(max)" />
+    <Property Name="mCreateTime" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WorkDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WorkItem" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkStart" Type="datetime" />
+    <Property Name="WorkEnd" Type="datetime" />
+    <Property Name="MachineState" Type="int" />
+    <Property Name="WorkID" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="WorkList">
+    <Key>
+      <PropertyRef Name="WID" />
+    </Key>
+    <Property Name="WID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Executor" Type="nvarchar" MaxLength="50" />
+    <Property Name="Item" Type="nvarchar" MaxLength="50" />
+    <Property Name="TotalNum" Type="int" />
+    <Property Name="StartTime" Type="datetime" />
+    <Property Name="EndTime" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="OCRModelStoreContainer">
+    <EntitySet Name="Camera" EntityType="Self.Camera" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginTime" EntityType="Self.LoginTime" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkDetail" EntityType="Self.WorkDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkList" EntityType="Self.WorkList" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Start Recognition</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        let isRecognitionActive = false;
+
+        $(document).ready(function () {
+            $("#startButton").click(function () {
+                let jetsonNanoUrl = $("#jetsonNanoUrl").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Camera/post_StartRecognition", 
+                    data: { jetsonNanoUrl : jetsonNanoUrl },
+                    success: function (response) {
+                        console.log("Recognition started:", response);
+                        isRecognitionActive = true;
+                        fetchRecognizedDigits(jetsonNanoUrl);
+                    },
+                    error: function (error) {
+                        console.error("Error starting recognition:", error);
+                    }
+                });
+            });
+
+            $("#stopButton").click(function () {
+                let jetsonNanoUrl = $("#jetsonNanoUrl").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Camera/StopRecognition", 
+                    data: { jetsonNanoUrl: jetsonNanoUrl },
+                    success: function (response) {
+                        console.log("Recognition stopped:", response);
+                        isRecognitionActive = false;
+                    },
+                    error: function (error) {
+                        console.error("Error stopping recognition:", error);
+                    }
+                });
+            });
+
+            function fetchRecognizedDigits(jetsonNanoUrl) {
+                var myTimer = setInterval(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "/Camera/GetRecognizedDigits",
+                        success: function (response) {
+                            console.log("GetRecognizedDigits:", response);
+                            if (isRecognitionActive) {
+                                //$("#recognizedDigits").empty();
+                                $("#recognizedDigits").append("<p>" + response.digits + "</p>");
+                                
+                            } else {
+                                clearInterval(myTimer);
+                                clearDigits();
+                            }
+                        },
+                        error: function (error) {
+                            console.error("Error fetching recognized digits:", error);
+                        }
+                    });
+                }, 2000);
+            }
+        });
+
+        function clearDigits() {
+            console.log("Clear!!");
+            $("#recognizedDigits").text('');
+        }
+    </script>
+</head>
+<body>
+    <label for="jetsonNanoUrl">Jetson Nano URL:</label>
+    <input type="text" id="jetsonNanoUrl" placeholder="Enter Jetson Nano URL" value="http://10.102.10.157:5000">
+
+    <button id="startButton">Start Recognition</button>
+    <button id="stopButton">Stop Recognition</button>
+
+    <div id="recognizedDigits"></div>
+</body>
+</html>

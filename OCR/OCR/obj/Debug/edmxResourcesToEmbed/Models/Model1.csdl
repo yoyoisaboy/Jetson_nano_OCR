@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OCRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LoginTime">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LoginTime1" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MID" />
+    </Key>
+    <Property Name="MID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Permissions" Type="Byte" />
+    <Property Name="Token" Type="Boolean" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="MID" />
+    </Key>
+    <Property Name="MID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mWID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mCreateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="WorkDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WorkItem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WorkStart" Type="DateTime" Precision="3" />
+    <Property Name="WorkEnd" Type="DateTime" Precision="3" />
+    <Property Name="MachineState" Type="Int32" />
+    <Property Name="WorkID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="WorkList">
+    <Key>
+      <PropertyRef Name="WID" />
+    </Key>
+    <Property Name="WID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Executor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Item" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalNum" Type="Int32" />
+    <Property Name="StartTime" Type="DateTime" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Camera">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="recognition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="OCREntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LoginTime" EntityType="Self.LoginTime" />
+    <EntitySet Name="Member" EntityType="Self.Member" />
+    <EntitySet Name="Message" EntityType="Self.Message" />
+    <EntitySet Name="WorkDetail" EntityType="Self.WorkDetail" />
+    <EntitySet Name="WorkList" EntityType="Self.WorkList" />
+    <EntitySet Name="Camera" EntityType="Self.Camera" />
+  </EntityContainer>
+</Schema>
